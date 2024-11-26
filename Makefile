@@ -1,5 +1,5 @@
 COMPILER=g++
-FLAGS=-Wall -std=c++11 -ggdb
+FLAGS=-Wall -std=c++17 -ggdb
 INCLUDES=include
 MAIN=main.cpp
 SRC=src/*.cpp

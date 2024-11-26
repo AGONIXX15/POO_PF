@@ -1,5 +1,6 @@
 #include "../include/ArchivoCSV.hpp"
 #include <fstream>
+#include <filesystem>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -63,6 +64,10 @@ void ArchivoCSV::read(bool header) {
  * retorna un dato
  * booleano (verdadero o falso segun si se encontro)*/
 bool ArchivoCSV::find(std::string id) {
+  if (!std::filesystem::exists(this->get_filename())){
+    std::cerr << "el archivo no existe:" << get_filename()  << std::endl;
+    exit(1);
+  };
   std::ifstream read(this->get_filename()); // lee el archivo
   std::string line; // variable a la cual se cargan datos de la linea
   std::getline(read, line); // cargar el encabezado pq no nos interesa

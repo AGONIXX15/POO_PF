@@ -24,7 +24,7 @@ void Cliente::load_data(std::string id) {
   this->set_name(data[0][1]);
   this->set_age(std::stoi(data[0][2]));
   ArchivoCSV credit("DB/Clientes/Tarjetas/tarjetas_credito.csv");
-  ArchivoCSV debit("DB/Clientes/Tarjetas/tarjetas_debito.csv");
+  ArchivoCSV  debit("DB/Clientes/Tarjetas/tarjetas_debito.csv");
   // cargar datos de la tarjeta de credito
   for (auto credit_card : credit.load_data(id)) {
     std::cout << "size of credit_card: " << credit_card.size() << std::endl; 
