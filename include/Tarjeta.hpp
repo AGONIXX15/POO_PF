@@ -3,10 +3,8 @@
 #include <string>
 class Tarjeta {
 public:
-  // constructores
   Tarjeta();
   Tarjeta(int id, std::string name, int number, int cvv, float balance);
-  // mostrar informacion de la tarjeta
   virtual void show_info() = 0;
 
   //SETTERS
@@ -20,11 +18,12 @@ public:
   int get_id();
   std::string get_name();
 
-  // manipulacion de archivos
-  // guardar
+
   virtual void write() = 0;
   virtual void update() = 0;
   virtual void remove() = 0;
+  virtual ~Tarjeta() = default; // Add this virtual destructor
+
  private:
   int id;
   std::string name;

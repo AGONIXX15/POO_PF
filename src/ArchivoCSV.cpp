@@ -1,5 +1,6 @@
 #include "../include/ArchivoCSV.hpp"
 #include <fstream>
+#include <filesystem>
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -63,6 +64,10 @@ void ArchivoCSV::read(bool header) {
  * retorna un dato
  * booleano (verdadero o falso segun si se encontro)*/
 bool ArchivoCSV::find(std::string id) {
+  if (!std::filesystem::exists(this->get_filename())){
+    std::cerr << "el archivo no existe:" << get_filename()  << std::endl;
+    exit(1);
+  };
   std::ifstream read(this->get_filename()); // lee el archivo
   std::string line; // variable a la cual se cargan datos de la linea
   std::getline(read, line); // cargar el encabezado pq no nos interesa
@@ -171,12 +176,21 @@ std::vector<std::vector<std::string>> ArchivoCSV::load_data(std::string id) {
   std::string line;  
   // se leen los encabezados pq no queremos
   std::getline(read, line);
-  // se declara la matriz
+  std::cout << line << std::endl;
   std::vector<std::vector<std::string>> data;
   while (std::getline(read, line)) {
     // leo una linea
+    if (line.size() == 0 || line == "\n"){
+      continue;
+    }
     auto row = split(line, ','); 
     // si es igual al id la agrego a mi matriz
+    if (row.size() == 0 ){
+      std::cout << "\n--------" << "\n";
+      std::cout << line << "\n";
+      std::cout << "mala fila" << std::endl;
+      continue;
+    }
     if (row[0] == id) { 
       data.push_back(row);
     }
