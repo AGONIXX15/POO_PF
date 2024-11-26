@@ -13,10 +13,10 @@ public:
 
   void agregar_cuenta_ahorro();
   void agregar_cuenta_corriente();
-  void add_debit_card(TarjetaDebito tarjeta);
-  void add_credit_card(TarjetaCredito tarjeta);
-  std::vector<TarjetaDebito>& get_debit_cards();
-  std::vector<TarjetaCredito>& get_credit_cards();
+  void add_debit_card(std::shared_ptr<TarjetaDebito> tarjeta);
+  void add_credit_card(std::shared_ptr<TarjetaCredito> tarjeta);
+  std::vector<std::shared_ptr<TarjetaDebito>> get_debit_cards();
+  std::vector<std::shared_ptr<TarjetaCredito>> get_credit_cards();
 
   // manipulacion de archivos
   ArchivoCSV& get_file();
@@ -27,8 +27,8 @@ public:
   bool& get_DataLoaded();
 
 private:
-  std::vector<TarjetaDebito> debit_cards;
-  std::vector<TarjetaCredito> credit_cards;
+  std::vector<std::shared_ptr<TarjetaDebito>> debit_cards;
+  std::vector<std::shared_ptr<TarjetaCredito>> credit_cards;
   bool data_loaded = false;
   ArchivoCSV file{"DB/Clientes/clientes.csv"};
 };

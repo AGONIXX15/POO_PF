@@ -171,12 +171,21 @@ std::vector<std::vector<std::string>> ArchivoCSV::load_data(std::string id) {
   std::string line;  
   // se leen los encabezados pq no queremos
   std::getline(read, line);
-  // se declara la matriz
+  std::cout << line << std::endl;
   std::vector<std::vector<std::string>> data;
   while (std::getline(read, line)) {
     // leo una linea
+    if (line.size() == 0 || line == "\n"){
+      continue;
+    }
     auto row = split(line, ','); 
     // si es igual al id la agrego a mi matriz
+    if (row.size() == 0 ){
+      std::cout << "\n--------" << "\n";
+      std::cout << line << "\n";
+      std::cout << "mala fila" << std::endl;
+      continue;
+    }
     if (row[0] == id) { 
       data.push_back(row);
     }

@@ -1,6 +1,5 @@
 #include "../include/TarjetaCredito.hpp"
 
-TarjetaCredito::TarjetaCredito() : Tarjeta() {}
 
 TarjetaCredito::TarjetaCredito(int id, std::string name, int number, int cvv,
                                float balance)

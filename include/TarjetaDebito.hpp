@@ -4,7 +4,7 @@
 
 class TarjetaDebito : public Tarjeta {
 public:
-  TarjetaDebito();
+  TarjetaDebito() = default;
   TarjetaDebito(int id, std::string name, int number, int cvv, float balance);
   void show_info() override;
   void write() override;

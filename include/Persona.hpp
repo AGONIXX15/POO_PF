@@ -1,4 +1,3 @@
-/* modulo para  */
 #pragma once
 
 
