@@ -1,4 +1,5 @@
 #pragma once
+#include "models/AccountTypeModel.hpp"
 #include <string>
 
 
@@ -8,6 +9,8 @@ private:
   std::string owner;
   std::string accountNumber;
   std::string status;
+  AccountTypeModel type;
+
 public:
   AccountModel(std::string owner,std::string accountNumber, std::string status, float balance);
   float GetBalance();
