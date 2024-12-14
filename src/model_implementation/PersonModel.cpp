@@ -10,5 +10,5 @@ int PersonModel::GetAge() { return age; }
 int PersonModel::GetId() { return id; }
 
 std::string PersonModel::ToString() {
-  return std::to_string(id) + "," + name + "," + std::to_string(age) + "\n";
+  return std::to_string(id) + "," + name + "," + std::to_string(age);
 }
