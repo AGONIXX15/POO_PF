@@ -1,5 +1,5 @@
 #pragma once
-#include "models/AccountTypeModel.hpp"
+#include "AccountTypeModel.hpp"
 #include <string>
 
 using namespace std;

@@ -1,5 +1,3 @@
-#include "include/models/ClientModel.hpp"
-#include "include/service/ClientService.hpp"
 #include "include/models/CardModel.hpp"
 #include "include/models/CardTypeModel.hpp"
 #include "include/service/CardService.hpp"
