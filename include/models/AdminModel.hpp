@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "models/PersonModel.hpp"
+#include "PersonModel.hpp"
 
 using namespace std;
 
