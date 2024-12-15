@@ -6,14 +6,18 @@ SRC=src/**/*.cpp
 BUILD=build
 
 setup:
+	# Crear el directorio build
 	mkdir -p build
 
 compile:
+	# Compilar el proyecto
 	$(COMPILER) $(FLAGS) $(INCLUDES) $(MAIN) $(SRC) -o $(BUILD)/main
 
-.PHONY: setup compile 
+.PHONY: setup compile run
+
 run:
+	# Ejecutar el programa
 	$(BUILD)/main
 
-
 all: setup compile run
+
