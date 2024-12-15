@@ -9,11 +9,13 @@ class EmployeeService{
 
 public:
     EmployeeService();
-    bool Find(int id);
+    bool Find(int);
     void Add(EmployeeModel employee);
-    void Remove();
+    void Remove(int);
     void Update(int id);
     void Read();
+   
+    
     
 };
 
