@@ -15,6 +15,8 @@ void EmployeeView::menu_employee(){
         cout << "2. mostrar empleados" << endl;
         cout << "3. eliminar empleado" << endl;
         cout << "4. actualizar empleado" << endl;
+        cout<<"0.salir"<<endl;
+        
         
         cin >> opc;
         cin.ignore();
@@ -59,6 +61,10 @@ void EmployeeView::menu_employee(){
                 cin >> id;
                 cin.ignore();
                 employeeService.Update(id);
+                break;
+            }
+            case 0:{
+                cout<<"saliendo de empleados..."<<endl;
                 break;
             }
             default:
