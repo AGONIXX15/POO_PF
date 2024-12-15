@@ -5,10 +5,15 @@
 
 class AccountTypeModel : public AccountModel {
     private:
-        std::string type;
+        float interest;
+        float limit;
+        float maintenanceCost;
     public:
-        AccountTypeModel(std::string owner, std::string accountNumber, std::string status, std::string creationDate, float balance, std::string type);
-        std::string GetType();
-        void SetType(std::string type);
-        void PrintAccountType();
+        AccountTypeModel(std::string owner, std::string accountType, int accountNumber, std::string status, std::string creationDate, float balance, std::string type, float interest, float limit, float maintenanceCost);
+        float GetInterest();
+        float GetLimit();
+        float GetMaintenanceCost();
+        std::string ToString();
+        void ShowInfo();
+
 };
