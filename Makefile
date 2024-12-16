@@ -12,7 +12,7 @@ compile:
 	$(COMPILER) $(FLAGS) $(INCLUDES) $(MAIN) $(SRC) -o $(BUILD)/main
 
 .PHONY: setup compile 
-run: setup
+run:
 	$(BUILD)/main
 
 

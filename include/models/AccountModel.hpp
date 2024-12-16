@@ -1,27 +1,36 @@
 #pragma once
-#include "models/AccountTypeModel.hpp"
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 
-class AccountModel {
-private:
-  float balance;
-  AccountTypeModel type;
+class AccountModel{
 
-public:
-  AccountModel(string owner,float balance);
-  float GetBalance();
+private:
   std::string owner;
-  std::string accountNumber;
+  std::string type;
+  int accountNumber;
   std::string status;
   std::string creationDate;
+  float balance;
+
 public:
-  AccountModel(std::string owner, std::string accountNumber, std::string status, std::string creationDate, float balance);
-  float GetBalance();
+  AccountModel(std::string owner, std::string type, int accountNumber, std::string status, std::string creationDate, float balance);
   std::string GetOwner();
+  std::string GetType();
   std::string GetAccountNumber();
   std::string GetStatus();
   std::string GetCreationDate();
+  float GetBalance();
+  void SetOwner(std::string);
+  void SetType(std::string);
+  void SetAccountNumber(int);
+  void SetStatus(std::string);
+  void SetCreationDate(std::string);
+  void SetBalance(float);
+  std::string ToString();
+  void ShowInfo();
+  
+
 };
