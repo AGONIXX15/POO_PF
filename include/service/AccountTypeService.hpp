@@ -11,4 +11,6 @@ class AccountTypeService : public AccountService {
         void ProcessAccounts(int);
         void Read(int numberAccount);
         void Read2(int numberAccount);
+        void Remove(int numberAccount);
+        void Remove2(int numberAccount);
 };
