@@ -99,6 +99,8 @@ void AccountView::ShowMenu() {
                 std::cout << "Ingrese el número de cuenta a eliminar: ";
                 std::cin >> accountNumber;
                 std::cin.ignore();
+                typeService.Remove(accountNumber);
+                typeService.Remove2(accountNumber);
                 service.Remove(accountNumber);
                 break;
             }
@@ -123,3 +125,4 @@ void AccountView::ShowMenu() {
         }
     } while (true);
 }
+
