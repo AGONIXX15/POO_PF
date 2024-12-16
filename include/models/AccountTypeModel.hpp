@@ -15,5 +15,4 @@ class AccountTypeModel : public AccountModel {
         float GetMaintenanceCost();
         std::string ToString();
         void ShowInfo();
-
 };

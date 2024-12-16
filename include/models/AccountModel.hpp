@@ -1,22 +1,22 @@
 #pragma once
-#include <string>
+#include "AccountTypeModel.hpp"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
-
-class AccountModel{
-
+class AccountModel {
 private:
+  float balance;
+  AccountTypeModel type;
   std::string owner;
-  std::string type;
   int accountNumber;
   std::string status;
   std::string creationDate;
-  float balance;
 
 public:
-  AccountModel(std::string owner, std::string type, int accountNumber, std::string status, std::string creationDate, float balance);
+  AccountModel(std::string owner, std::string type, int accountNumber,
+               std::string status, std::string creationDate, float balance);
   std::string GetOwner();
   std::string GetType();
   std::string GetAccountNumber();
@@ -31,6 +31,4 @@ public:
   void SetBalance(float);
   std::string ToString();
   void ShowInfo();
-  
-
 };
