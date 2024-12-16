@@ -166,3 +166,37 @@ void AccountTypeService::Read2(int numberAccount) {
         }
     }
 }
+
+void AccountTypeService::Remove(int numberAccount) {
+    std::ifstream savingsFile(filename1);
+    std::ofstream tempFile("db/temp.csv", std::ios::app);
+    std::string line;
+    while (std::getline(savingsFile, line)) {
+        std::vector<std::string> tokens = split1(line, ',');
+        if (std::stoi(tokens[2]) != numberAccount) {
+            tempFile << line << "\n";
+        }
+    }
+    savingsFile.close();
+    tempFile.close();
+    remove(filename1.c_str());
+    rename("db/temp.csv", filename1.c_str());
+}
+
+void AccountTypeService::Remove2(int numberAccount) {
+    std::ifstream currentFile(filename2);
+    std::ofstream tempFile("db/temp.csv", std::ios::app);
+    std::string line;
+    while (std::getline(currentFile, line)) {
+        std::vector<std::string> tokens = split1(line, ',');
+        if (std::stoi(tokens[2]) != numberAccount) {
+            tempFile << line << "\n";
+        }
+    }
+    currentFile.close();
+    tempFile.close();
+    
+    remove(filename2.c_str());
+    rename("db/temp.csv", filename2.c_str());
+}
+
