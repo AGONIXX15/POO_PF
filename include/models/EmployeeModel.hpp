@@ -1,22 +1,21 @@
 #pragma once
-#include <iostream>
-#include <string>
 #include "PersonModel.hpp"
-using namespace std;
+#include <iostream>
 
 class EmployeeModel : public PersonModel {
 private:
-  string position;
-  float salary;
-  int bank_id;
+  float wage;            // salario
+  std::string timetable; // horario
+  int dni;               // la cedula del  del empleado
+  static int id_counter;
 
 public:
-  EmployeeModel(int id, string name, int age, string position,
-  float salary);
-  string GetPosition();
-  float GetSalary();
-  int GetBankId();
-
-  string ToString();
-  void ShowInfo();
+  EmployeeModel(std::string, int, float, std::string, int);
+  float get_wage();            // get_salario
+  int get_dni();               // get_cedula
+  std::string get_timetable(); // get_horario
+  void set_wage(float);
+  void set_timetable(std::string);
+  // int load_id();
+  std::string ToString() override;
 };

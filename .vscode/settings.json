@@ -58,9 +58,12 @@
   "C_Cpp_Runner.msvcSecureNoWarnings": false,
   "files.associations": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "iostream": "cpp"
 =======
     "vector": "cpp",
+=======
+>>>>>>> origin/devia
     "array": "cpp",
     "atomic": "cpp",
     "bit": "cpp",
@@ -79,6 +82,10 @@
     "cwctype": "cpp",
     "deque": "cpp",
     "unordered_map": "cpp",
+<<<<<<< HEAD
+=======
+    "vector": "cpp",
+>>>>>>> origin/devia
     "exception": "cpp",
     "algorithm": "cpp",
     "functional": "cpp",
@@ -106,7 +113,12 @@
     "sstream": "cpp",
     "stdexcept": "cpp",
     "streambuf": "cpp",
+<<<<<<< HEAD
     "typeinfo": "cpp"
 >>>>>>> origin/karen
+=======
+    "typeinfo": "cpp",
+    "employeeviewcpp": "cpp"
+>>>>>>> origin/devia
   }
 }

@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 build
 compile_commands.json
 .cache
 db
+=======
+build
+compile_commands.json
+.cache
+>>>>>>> origin/devia

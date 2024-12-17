@@ -2,8 +2,6 @@
 #include "../../include/utils.hpp"
 using namespace std;
 
-
-
 // constructor
 ClientService::ClientService() {}
 

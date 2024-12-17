@@ -8,8 +8,13 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
+<<<<<<< HEAD
       "cwd": "c:/Users/Usuario/Desktop/Proyecto Final POO/POO_PF",
       "program": "c:/Users/Usuario/Desktop/Proyecto Final POO/POO_PF/build/Debug/outDebug",
+=======
+      "cwd": "c:/Users/sebas/Desktop/proyecto_final#2/POO_PF",
+      "program": "c:/Users/sebas/Desktop/proyecto_final#2/POO_PF/build/Debug/outDebug",
+>>>>>>> origin/devia
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
