@@ -16,7 +16,7 @@ private:
   string id_client;
 
 public:
-  CardModel(int balance, string id_client,string name);
+  CardModel(int balance, string id_client, string name);
   CardModel(string line);
   string GetNumber();
   string GetCvv();

@@ -80,6 +80,8 @@ void ClientService::Read() {
  * @param int id: el id del cliente del cual se cargan los datos
  * @return ClientModel un modelado del cliente con los datos del db*/
 ClientModel ClientService::LoadData(string id) {
+  AccountService account_service;
+  CardService card_service;
   ifstream file(filename);
   string line;
   while (getline(file, line)) {
@@ -88,6 +90,7 @@ ClientModel ClientService::LoadData(string id) {
       string id = data[0];
       string name = data[1];
       int age = stoi(data[2]);
+      // meter que cargue los vectores
       return ClientModel(id, name, age);
     }
   }

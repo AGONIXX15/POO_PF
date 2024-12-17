@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #pragma once
 #include "../models/CardModel.hpp"
 #include "../utils.hpp"
@@ -21,11 +20,3 @@ public:
   void Read();
   vector<CardModel> LoadData(string number);
 };
-=======
-#pragma once
-
-
-class CardService {
-
-};
->>>>>>> origin/devia
