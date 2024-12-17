@@ -2,15 +2,8 @@
 using namespace std;
 
 
-ClientModel::ClientModel(int id, string name, int age): PersonModel(id,name,age){}
+ClientModel::ClientModel(string id, string name, int age): PersonModel(id,name,age){}
 
-vector<CardModel>& ClientModel::GetCards(){
-  return cards;
-}
-
-vector<AccountModel>& ClientModel::GetAccounts(){
-  return accounts;
-}
 
 string ClientModel::ToString(){
   return PersonModel::ToString();

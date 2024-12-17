@@ -1,22 +1,31 @@
 #pragma once
-#include "CardTypeModel.hpp"
+#include "../utils.hpp"
+#include <iostream>
 #include <string>
 
+using namespace std;
+
 class CardModel {
+
+private:
+  string expire_date = "12/12/2030"; // fecha de expiracion
+  string number;                     // numero de la tarjeta
+  string cvv;                        // pin de la cuenta
+  int balance;                       // dinero de la cuenta
+  string name;
+  string id_client;
+
 public:
-  std::string brand;
-  int number;
-  int cvv;
-  float balance;
-  CardTypeModel type;
-  CardModel(int number, int cvv, float balance, CardTypeModel type);
-  std::string GetBrand();
-  int GetNumber();
-  int GetCvv();
-  float GetBalance();
-  CardTypeModel GetType();
-  void Transfer(float amount);
-  void SaveFunds(float amount, bool is_credit);
-  void WithdrawFunds(float amount, bool is_credit);
-  std::string ToString();
+  CardModel(int balance, string id_client,string name);
+  CardModel(string line);
+  string GetNumber();
+  string GetCvv();
+  int GetBalance();
+  string GetExpireDate();
+  string GetIdClient();
+  string ToString();
+  void ShowInfo();
+
+  void LowerBalance(int amount); // subir valor
+  void UpperBalance(int amount); // bajar valor
 };

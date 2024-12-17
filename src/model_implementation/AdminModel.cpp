@@ -1,7 +1,7 @@
 #include "../../include/models/AdminModel.hpp"
 using namespace std;
 
-AdminModel::AdminModel(int id, string name, int age, string password): PersonModel(id,name,age){
+AdminModel::AdminModel(string id, string name, int age, string password): PersonModel(id,name,age){
   this->password = password;
 }
 

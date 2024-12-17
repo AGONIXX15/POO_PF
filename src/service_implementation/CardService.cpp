@@ -1,44 +1,67 @@
 #include "../../include/service/CardService.hpp"
-#include "../../include/models/utils.hpp"
 
-CardService::CardService(CardModel card) {
-  if(card.GetType().GetType() == "credit"){
-    this->filename = "db/credit_cards.csv";
-  }
-  else{
-    this->filename = "db/debit_cards.csv";
-  }
-}
+CardService::CardService() {}
 
-bool CardService::Find(int number) {
-  std::string strnumber = std::to_string(number);
-  std::ifstream file(filename);
-  std::string line;
-  while (std::getline(file, line)) {
-    auto data = split(line, ',')[1];
-    if (data == strnumber) {
+bool CardService::Find(string number) {
+  ifstream file(filename);
+  string line;
+  while (getline(file, line)) {
+    auto data = split(line, ',');
+    if (data[0] == number) {
       return true;
     }
   }
   return false;
 }
 
-void CardService::Add(CardModel card){
-  std::ofstream file(filename, std::ios::app);
-  file << card.ToString();
+void CardService::Add(CardModel card) {
+  ofstream file(filename, ios::app);
+  file << card.ToString() << endl;
 }
 
-void CardService::Update(int number){
-    std::string strnumber = std::to_string(number);
-    std::ifstream file(filename);
-    std::string line;
-    std::vector<std::string> lines;
-    while (std::getline(file, line)) {
-        auto data = split(line, ',')[1];
-        if (data == strnumber) {
-            lines.push_back(line);
-        }
+void CardService::Remove(string number) {
+  ifstream file(filename);
+  string line;
+  vector<string> vec;
+  while (getline(file, line)) {
+    auto data = split(line, ',');
+    if (data[0] == number)
+      continue;
+    vec.push_back(line);
+  }
+  ofstream file_write(filename);
+  for (auto line : vec) {
+    file_write << line << endl;
+  }
+}
+
+void CardService::Update(CardModel card) {
+  if (!Find(card.GetNumber())) {
+    cout << "no se ha encontrado esa tarjeta que iba a actualizar" << endl;
+    return;
+  }
+  Remove(card.GetNumber());
+  Add(card);
+}
+
+void CardService::Read() {
+  ifstream file(filename);
+  string line;
+  while (getline(file, line)) {
+    cout << line << endl;
+  }
+}
+
+vector<CardModel> CardService::LoadData(string number) {
+  vector<CardModel> vec;
+  ifstream file(filename);
+  string line;
+  while (getline(file, line)) {
+    auto data = split(line, ',');
+    if (data[0] == number) {
+      CardModel card(line);
+      vec.push_back(card);
     }
-    file.close();
-    
+  }
+  return vec;
 }

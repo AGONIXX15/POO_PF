@@ -11,10 +11,10 @@ class ClientService{
 public:
   string filename = "db/clientes.csv";
   ClientService();
-  bool Find(int id);
-  void Remove(int id);
+  bool Find(string id);
+  void Remove(string id);
   void Update(ClientModel client);
   void Read();
   void Add(ClientModel client);
-  ClientModel LoadData(int id);
+  ClientModel LoadData(string id);
 };

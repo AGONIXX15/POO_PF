@@ -2,15 +2,15 @@
 
 using namespace std;
 
-PersonModel::PersonModel(int id, string name, int age)
+PersonModel::PersonModel(string id, string name, int age)
     : name(name), age(age), id(id) {}
 
 string PersonModel::GetName() { return name; }
 
 int PersonModel::GetAge() { return age; }
 
-int PersonModel::GetId() { return id; }
+string PersonModel::GetId() { return id; }
 
 string PersonModel::ToString() {
-  return to_string(id) + "," + name + "," + to_string(age);
+  return id + "," + name + "," + to_string(age);
 }

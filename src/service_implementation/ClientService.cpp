@@ -1,15 +1,8 @@
 #include "../../include/service/ClientService.hpp"
+#include "../../include/utils.hpp"
 using namespace std;
 
-vector<string> split(string line, char delimiter) {
-  vector<string> tokens;
-  string token;
-  stringstream ss(line);
-  while (getline(ss, token, delimiter)) {
-    tokens.push_back(token);
-  }
-  return tokens;
-}
+
 
 // constructor
 ClientService::ClientService() {}
@@ -17,13 +10,12 @@ ClientService::ClientService() {}
 /*metodo de busqueda de un cliente
  * @param int id: el id del cliente que se va a buscar
  * @return bool*/
-bool ClientService::Find(int id) {
-  string strid = to_string(id);
+bool ClientService::Find(string id) {
   ifstream file(filename);
   string line;
   while (getline(file, line)) {
     auto data = split(line, ',')[0];
-    if (data == strid) {
+    if (data == id) {
       return true;
     }
   }
@@ -34,6 +26,10 @@ bool ClientService::Find(int id) {
  * @param ClientModel client: este es un modelo de cliente
  * @return void*/
 void ClientService::Add(ClientModel client) {
+  if (Find(client.GetId())) {
+    cerr << "el cliente ya existe" << endl;
+    return;
+  }
   ofstream file(filename, ios::app);
   file << client.ToString() << endl;
 }
@@ -47,13 +43,13 @@ void ClientService::Update(ClientModel client) {
   }
 }
 
-void ClientService::Remove(int id) {
+void ClientService::Remove(string id) {
   ifstream file_read(filename);
   string line;
   vector<string> lines;
   while (getline(file_read, line)) {
     auto data = split(line, ',')[0];
-    if (data != to_string(id)) {
+    if (data != id) {
       lines.push_back(line);
     }
   }
@@ -85,13 +81,13 @@ void ClientService::Read() {
  * antes de usar este metodo
  * @param int id: el id del cliente del cual se cargan los datos
  * @return ClientModel un modelado del cliente con los datos del db*/
-ClientModel ClientService::LoadData(int id) {
+ClientModel ClientService::LoadData(string id) {
   ifstream file(filename);
   string line;
   while (getline(file, line)) {
     auto data = split(line, ',');
-    if (data[0] == to_string(id)) {
-      int id = stoi(data[0]);
+    if (data[0] == id) {
+      string id = data[0];
       string name = data[1];
       int age = stoi(data[2]);
       return ClientModel(id, name, age);

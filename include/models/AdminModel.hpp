@@ -10,7 +10,7 @@ private:
   int admin_id;
 
 public:
-  AdminModel(int id, string name, int age, string password);
+  AdminModel(string id, string name, int age, string password);
   string GetPassword();
   int GetAdminId();
   string ToString() override;

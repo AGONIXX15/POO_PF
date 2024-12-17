@@ -1,17 +1,22 @@
 #pragma once
 #include "../models/CardModel.hpp"
+#include "../utils.hpp"
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
 
+using namespace std;
+
 class CardService {
 public:
-  std::string filename;
-  CardService(CardModel card);
-  bool Find(int number);
+  string filename = "cards.csv";
+  CardService();
+  // devuelve valor booleano si encuentra la tarjeta
+  bool Find(string number);
   void Add(CardModel card);
-  void Remove(int number);
-  void Update(int number);
+  void Remove(string number);
+  void Update(CardModel card);
   void Read();
+  vector<CardModel> LoadData(string number);
 };

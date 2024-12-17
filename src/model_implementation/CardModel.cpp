@@ -1,92 +1,52 @@
-#include "../../include/models/CardModel.hpp"  
-#include <string>
-#include <iostream>
+#include "../../include/models/CardModel.hpp"
+#include "../../include/utils.hpp"
 
-CardModel::CardModel(int number, int cvv, float balance, CardTypeModel type){
-    this->number = number;
-    this->cvv = cvv;
-    this->balance = balance;
-    this->type = type;
+CardModel::CardModel(int balance, string id_client, string name) {
+
+  this->id_client = id_client;
+  this->name = name;
+  number = gen_number(16);
+  cvv = gen_number(3);
+  this->balance = balance;
 }
 
-
-std::string CardModel::GetBrand(){
-    return this->brand;
+CardModel::CardModel(string line){
+  auto data = split(line, ',');
+  id_client = data[0];
+  number = data[1];
+  cvv = data[2];
+  balance = stoi(data[3]);
+  name = data[4];
+  expire_date = data[5];
 }
 
-int CardModel::GetNumber(){
-    return this->number;
+string CardModel::GetNumber() { return number; }
+
+string CardModel::GetCvv() { return cvv; }
+
+int CardModel::GetBalance() { return balance; }
+
+string CardModel::ToString() {
+  return id_client + "," + number + "," + cvv + "," + to_string(balance) + "," + name + "," +
+         expire_date;
 }
 
-int CardModel::GetCvv(){
-    return this->cvv;
+void CardModel::ShowInfo() {
+  cout << "______________________" << endl;
+  cout << "nombre del propietario: " << name << endl;
+  cout << "Card number: " << number << endl;
+  cout << "CVV: " << cvv << endl;
+  cout << "Balance: " << balance << endl;
+  cout << "Expire date: " << expire_date << endl;
+  cout << "______________________" << endl;
 }
 
-float CardModel::GetBalance(){
-    return this->balance;
+void CardModel::LowerBalance(int amount) {
+  if (balance - amount < 0) {
+    cout << "No tienes suficiente dinero" << endl;
+    return;
+  }
+  balance -= amount;
 }
 
-CardTypeModel CardModel::GetType(){
-    return this->type;
-}
-
-void CardModel::Transfer(float amount){
-    if(this->type.GetType() == "debit"){
-        if(this->balance < amount){
-            std::cout << "Insufficient funds" << std::endl;
-        }
-        else{
-            this->balance -= amount;
-        }
-    }
-    else{
-        if(!this->type.GetCreditLimit()){
-            std::cout << "Credit limit exceeded" << std::endl;
-        }
-        else if(this->type.GetCreditLimit() < amount){
-            std::cout << "Insufficient funds" << std::endl;
-        }
-        else{
-            this->type.SetCreditLimit(this->type.GetCreditLimit() - amount);
-            this->type.SetInterestRate(this->type.GetInterestRate() + amount * 0.1);
-        }
-    }
-}
-
-void CardModel::SaveFunds(float amount, bool is_credit){
-    if(is_credit){
-        this->type.PayDoubts(amount);
-    }
-    else{
-        this->balance += amount;
-    }
-}
-
-void CardModel::WithdrawFunds(float amount, bool is_credit){
-    if(is_credit){
-        if(this->type.GetCreditLimit() < amount){
-            std::cout << "Insufficient funds" << std::endl;
-        }
-        else{
-            this->type.SetCreditLimit(this->type.GetCreditLimit() - amount);
-            this->type.SetInterestRate(this->type.GetInterestRate() + amount * 0.1);
-        }
-    }
-    else{
-        if(this->balance < amount){
-            std::cout << "Insufficient funds" << std::endl;
-        }
-        else{
-            this->balance -= amount;
-        }
-    }
-}
-
-std::string CardModel::ToString(){
-    if(this->type.GetType() == "credit"){
-        return this->brand + "," + std::to_string(this->number) + "," + std::to_string(this->cvv) + "," + std::to_string(this->balance) + "," + this->type.GetType() + "," + std::to_string(this->type.GetCreditLimit()) + "," + std::to_string(this->type.GetInterestRate()) + "\n";
-    }
-    else{
-        return this->brand + "," + std::to_string(this->number) + "," + std::to_string(this->cvv) + "," + std::to_string(this->balance) + "," + this->type.GetType() + "\n";
-    }
-}
+void CardModel::UpperBalance(int amount) { balance += amount; }
